@@ -1,0 +1,8 @@
+FROM php:7.4-fpm
+ARG ENABLE=true
+
+USER 0
+RUN apt update && apt install -y libgmp-dev
+RUN docker-php-ext-install sockets gmp
+USER 1001
+CMD php /script.php
